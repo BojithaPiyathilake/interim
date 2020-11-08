@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dark Home</title>
+  <title>National Environment Platform</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <!-- Brand/logo -->
 <a class="navbar-brand" href="#">
-  <img src="Logo.jpeg" alt="logo" style="width:70px;">
+  <img src="/img/Logo.jpeg" alt="logo" style="width:70px;">
 </a>
 <!--Toggler-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">

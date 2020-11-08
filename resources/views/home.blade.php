@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Dark Dashboard</title>
+  <title>National Environment Platform</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand/logo -->
         <a class="navbar-brand mr-auto" href="#">
-        <img src="Logo.jpeg" alt="logo" style="width:70px;">
+        <img src="/img/Logo.jpeg" alt="logo" style="width:70px;">
         </a>
 
         <a href="#" class="text-secondary mr-1">Help          |</a>
@@ -30,7 +30,7 @@
             <i class="fas fa-bell mr-1"> <span class="badge badge-light">4</span>        |</i>
         </a>
 
-        <a href="#" class="text-secondary">
+        <a href="/passwordReset" class="text-secondary">
             <i class="fas fa-cog mr-1">          |</i>
         </a>
 
@@ -85,7 +85,7 @@
                 <a class="nav-link text-light font-italic p-2" href="/general">General Module</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light font-italic p-2" href="/admin">User Management</a>
+                <a class="nav-link text-light font-italic p-2" href="/administrator/index">User Management</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light font-italic p-2" href="#">Environment Module</a>
@@ -114,7 +114,7 @@
 </div>
 </div>
 <br>
-<div class="d-flex  bg-light justify-content-end">
+<div class="d-flex bg-light justify-content-end mt-5">
   <a href="#" class="text-secondary mr-2">
     <i class="fab fa-facebook-square"></i> Facebook |
   </a>

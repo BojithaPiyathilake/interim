@@ -18,27 +18,54 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/lighthome', function () {
-    return view('test2');
-});
-
-Route::get('/dash', function () {
-    return view('test3');
-});
-
 Route::get('/home', function () {
-    //dd(\Illuminate\Support\Facades\Auth::user());
-    return view('test/dashboard');
+    return view('admin/dashboard');
 })->middleware(['auth', 'verified']);
 
-
-Route::get('/admin', function(){
-    return view('test/adminHome');
-});
-
 Route::get('/general', function(){
-    return view('test/mainview');
+    return view('admin/mainview');
 });
+
+
+//////////////////////////ADMINISTRATOR ROUTES
+
+Route::get('/administrator/index', 'AdministratorController@index');
+
+Route::get('/administrator/show/{id}', 'AdministratorController@show');
+
+Route::get('/administrator/edit/{id}', 'AdministratorController@edit');
+
+Route::patch('/administrator/update/{id}', 'AdministratorController@update');
+
+Route::delete('/administrator/delete/{id}', 'AdministratorController@destroy');
+
+Route::get('/administrator/editpriviledge/{id}', 'AdministratorController@privilege');
+
+Route::patch('/administrator/updateprivilege/{id}', 'AdministratorController@updateprivilege');
+
+Route::get('/administrator/selfRegistered', 'AdministratorController@self');
+
+Route::get('/administrator/activate/{id}', 'AdministratorController@activate');
+
+Route::patch('/administrator/doActivate/{id}', 'AdministratorController@doActivate');
+
+Route::get('/administrator/create', function () {
+         return view('admin/adminCreate');
+     });
+
+Route::post('/administrator/store', 'AdministratorController@store');
+
+Route::get('/passwordReset', function() {
+    return view('passwordReset');
+});
+
+Route::patch('/resetpassword', 'AdministratorController@passwordReset');
 
 //Route::get('/roles', [RoleController::class, 'fetchAllRoles']);
 //Route::get('/arole', [RoleController::class, 'fetchARole']);
+// Route::get('/lighthome', function () {
+//     return view('test2');
+// });
+// Route::get('/dash', function () {
+//     return view('test3');
+// });

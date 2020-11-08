@@ -87,7 +87,7 @@
                            <div class="input-group-prepend">
                                <span class="input-group-text">Full Name</span>
                            </div>
-                           <input type="text" class="form-control" placeholder="current user's name">
+                           <input type="text" class="form-control" placeholder="{{$user->name}}">
                        </div>
 
                        <div class="input-group mb-3">
