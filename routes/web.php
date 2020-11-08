@@ -69,3 +69,35 @@ Route::post('/alterPassword', 'UserController@alterPass');
 // Route::get('/dash', function () {
 //     return view('test3');
 // });
+
+
+
+//////////////////HOO ROUTES
+
+Route::get('/headOrg/show/{id}', 'headOrgController@show');
+
+Route::get('/headOrg/edit/{id}', 'headOrgController@edit');
+
+Route::patch('/headOrg/update/{id}', 'headOrgController@update');
+
+Route::get('/headOrg/create', function () {
+         return view('headOrg/headOrgCreate');
+     });
+
+Route::post('/headOrg/store', 'headOrgController@store'); 
+
+
+
+///////////////MANAGER ROUTES
+
+Route::get('/manager/show/{id}', 'managerController@show');
+
+Route::get('/manager/edit/{id}', 'managerController@edit');
+
+Route::patch('/manager/update/{id}', 'managerController@update');
+
+Route::get('/manager/create', function () {
+         return view('manager/managerCreate');
+     });
+
+Route::post('/manager/store', 'managerController@store');

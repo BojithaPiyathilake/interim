@@ -38,7 +38,7 @@ class AdministratorController extends Controller
             'organization_id' => $request->organization,
         ]);
         //ddd($request);
-        return redirect('/administrator/index')->with('message', 'User Updated Successfully');
+        return redirect('/user/index')->with('message', 'User Updated Successfully');
     }
 
     public function updateprivilege(Request $request, $id)      //to update privileges via update
@@ -48,7 +48,7 @@ class AdministratorController extends Controller
             'role_id' => $request->role,
         ]);
         //ddd($request);
-        return redirect('/administrator/index')->with('message', 'Privilege Updated Successfully');
+        return redirect('/user/index')->with('message', 'Privilege Updated Successfully');
     }
 
     public function destroy($id)            //to delete a record
@@ -110,7 +110,7 @@ class AdministratorController extends Controller
         $user->status = $request->status;
         $user->password = bcrypt("password");
         $user->save();
-        return redirect('/administrator/index')->with('message', 'User Successfully created');
+        return redirect('/user/index')->with('message', 'User Successfully created');
     }
 
 }

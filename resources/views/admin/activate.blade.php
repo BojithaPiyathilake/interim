@@ -2,7 +2,7 @@
 
 @section('cont')
 
-<kbd><a href="{{ url()->previous() }}" class="text-white font-weight-bolder"><i class="fas fa-chevron-left"></i></i> BACK</a></kbd>
+<kbd><a href="/administrator/selfRegistered" class="text-white font-weight-bolder"><i class="fas fa-chevron-left"></i></i> BACK</a></kbd>
 <div class="container">
     <h2 style="text-align:center;" class="text-dark">Activate {{$user->name}}</h2>
     <hr>

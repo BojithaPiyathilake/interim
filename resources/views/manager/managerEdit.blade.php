@@ -15,7 +15,7 @@
     <hr>
     <div class="row justify-content-md-center border p-4 bg-white">
         <div class="col-6 ml-3">
-            <form method="post" action="/administrator/update/{{$user->id}}">
+            <form method="post" action="/headOrg/update/{{$user->id}}">
                 @csrf
                 @method('patch')
                 <div class="input-group mb-3">
@@ -24,9 +24,6 @@
                     </div>
                     <input type="text" class="form-control" name="name" value="{{$user->name}}">
                 </div>
-                @error('name')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -34,35 +31,15 @@
                     </div>
                     <input type="text" class="form-control" name="email" value="{{$user->email}}">
                 </div>
-                @error('email')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
 
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Organization</span>
-                        <select name="organization" class="custom-select">
-                            @if($user->organization == NULL)
-                            <option selected value="NULL">Select Organization</option>
-                            @else
-                            <option selected value="{{$user->organization_id}}">{{$user->organization->title}}</option>
-                            @endif
-                            <option value=1>Reforest Sri Lanka</option>
-                            <option value=2>Ministry of Environment</option>
-                            <option value=3>Central Environmental Authority</option>
-                            <option value=4>Ministry of Wilflife</option>
-                            <option value=5>Road Development Agency</option>
-                        </select>
-                    </div>
-                </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Designation</span>
                         <select name="designation" class="custom-select">
                             @if($user->designation == NULL)
-                            <option selected value="NULL">Select Designaion</option>
+                            <option selected value="NULL">Select Designation</option>
                             @else
                             <option selected value="{{$user->designation_id}}">{{$user->designation->title}}</option>
                             @endif
@@ -76,6 +53,7 @@
                         </select>
                     </div>
                 </div>
+
 
                 <div style="float:right;">
                     <button type="submit" class="btn btn-warning">Submit</button>

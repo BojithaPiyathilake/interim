@@ -11,28 +11,25 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index()                  //show all records for index
     {
         $role = Auth::user()->role_id;
 
-        if ($role == 1 || $role == 2) {
-            $users = User::all();           //show all records for index
+        if ($role == 1 || $role == 2) {         //Admin  
+            $users = User::where('role_id', '>' , 1)->orWhereNull('role_id',)->get();      
             return view('admin/adminIndex', [
                 'users' => $users,
             ]);
-        // } else if ($role == 2) {
-        //     $users = User::all();
-        //     return view('admin/adminIndex', [
-        //         'users' => $users,
-        //     ]);
-        } else if ($role == 3) {
-            dd("hoo view");
-        } else if ($role == 3) {
-            dd("manager view");
-        } else if ($role == 3) {
-            dd("hello");
-        } else if ($role == 3) {
-            dd("hello");
+        } else if ($role == 3) {                //HoO    
+            $users = User::where('role_id', '>' , 2)->orWhereNull('role_id')->get();
+            return view('headOrg/headOrgIndex', [
+                'users' => $users,
+            ]);
+        } else if ($role == 4) {            //Manager
+            $users = User::where('role_id', '>' , 3)->orWhereNull('role_id')->get();
+            return view('manager/managerIndex', [
+                'users' => $users,
+            ]);
         }
 
         // $users = \App\Models\User::with('organization')->get();
@@ -44,7 +41,6 @@ class UserController extends Controller
 
     public function alterPass(Request $request)
     {
-        $role = Auth::user()->role_id;
 
         $rules = [
             'currentpassword' => 'required',
@@ -71,24 +67,8 @@ class UserController extends Controller
             $user->update([
                 'password' => bcrypt($request->newpassword),
             ]);
-            if ($role == 1 || $role == 2) {
-                return redirect('/administrator/index')->with('message', 'Password Successfully Changed');
-            }
-            if ($role == 3) {
-                return redirect('/HEADOFORGANIZATION/index')->with('message', 'Password Successfully Changed');
-            }
-            if ($role == 3) {
-                return redirect('/MANAGER/index')->with('message', 'Password Successfully Changed');
-            }
+                return redirect('/user/index')->with('message', 'Password Successfully Changed');
         } else
-        if ($role == 1 || $role == 2) {
-            return redirect('/administrator/index')->with('danger', 'Current Password is Incorrect');
-        }
-        if ($role == 3) {
-            return redirect('/HEADOFORGANIZATION/index')->with('danger', 'Current Password is Incorrect');
-        }
-        if ($role == 3) {
-            return redirect('/MANAGER/index')->with('danger', 'Current Password is Incorrect');
-        }
+            return redirect('/user/index')->with('danger', 'Current Password is Incorrect');
     }
 }
