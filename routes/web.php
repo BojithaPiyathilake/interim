@@ -29,7 +29,7 @@ Route::get('/general', function(){
 
 //////////////////////////ADMINISTRATOR ROUTES
 
-Route::get('/administrator/index', 'AdministratorController@index');
+Route::get('/user/index', 'UserController@index');
 
 Route::get('/administrator/show/{id}', 'AdministratorController@show');
 
@@ -59,7 +59,7 @@ Route::get('/passwordReset', function() {
     return view('passwordReset');
 });
 
-Route::patch('/resetpassword', 'AdministratorController@passwordReset');
+Route::post('/alterPassword', 'UserController@alterPass');
 
 //Route::get('/roles', [RoleController::class, 'fetchAllRoles']);
 //Route::get('/arole', [RoleController::class, 'fetchARole']);

@@ -27,16 +27,11 @@
                 </div>
 
 
-
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Role</span>
                         <select name="role" class="custom-select">
-                            @if($user->role == NULL)
-                            <option selected value="NULL">Select Role</option>
-                            @else
-                            <option selected value="{{$user->role_id}}">{{$user->role->title}}</option>
-                            @endif
+                            <option selected>Select Role</option>
                             <option value=2>Admin</option>
                             <option value=3>Head Of Organization</option>
                             <option value=4>Manager</option>
@@ -45,16 +40,15 @@
                         </select>
                     </div>
                 </div>
+                @error('role')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Organization</span>
                         <select name="organization" class="custom-select">
-                            @if($user->organization == NULL)
-                            <option selected value="NULL">Select Organization</option>
-                            @else
-                            <option selected value="{{$user->organization_id}}">{{$user->organization->title}}</option>
-                            @endif
+                            <option selected>Select Organization</option>
                             <option value=1>Reforest Sri Lanka</option>
                             <option value=2>Ministry of Environment</option>
                             <option value=3>Central Environmental Authority</option>
@@ -62,18 +56,16 @@
                             <option value=5>Road Development Agency</option>
                         </select>
                     </div>
-
                 </div>
+                @error('organization')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Designation</span>
                         <select name="designation" class="custom-select">
-                            @if($user->designation == NULL)
-                            <option selected value="NULL">Select Designaion</option>
-                            @else
-                            <option selected value="{{$user->designation_id}}">{{$user->designation->title}}</option>
-                            @endif
+                            <option selected>Select Designation</option>
                             <option value=1>Additional Director</option>
                             <option value=2>Manager</option>
                             <option value=3>Director</option>
@@ -84,6 +76,9 @@
                         </select>
                     </div>
                 </div>
+                @error('designation')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
 
                 <div class="form-check border-secondary rounded-lg mb-4" style="background-color:#ebeef0">
@@ -98,7 +93,7 @@
                     </fieldset>
                 </div>
                 <div style="float:right;">
-                    <button type="submit" name="status" value=1 class="btn btn-success">Activate</button>
+                    <button type="submit" name="status" value="1" class="btn btn-success">Activate</button>
                 </div>
             </form>
         </div>

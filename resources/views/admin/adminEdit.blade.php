@@ -24,6 +24,9 @@
                     </div>
                     <input type="text" class="form-control" name="name" value="{{$user->name}}">
                 </div>
+                @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -31,6 +34,9 @@
                     </div>
                     <input type="text" class="form-control" name="email" value="{{$user->email}}">
                 </div>
+                @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
 
                 <div class="input-group mb-3">
@@ -49,7 +55,6 @@
                             <option value=5>Road Development Agency</option>
                         </select>
                     </div>
-
                 </div>
 
                 <div class="input-group mb-3">
@@ -71,7 +76,6 @@
                         </select>
                     </div>
                 </div>
-
 
                 <div style="float:right;">
                     <button type="submit" class="btn btn-warning">Submit</button>

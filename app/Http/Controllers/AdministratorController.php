@@ -1,32 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Hash;
-use App\Http\Controllers\Auth;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserEditRequest;
+use App\Http\Requests\ActivateRequest;
+
 
 class AdministratorController extends Controller
 {
-    public function index()
-    {
-
-        $users = User::all();           //show all records for index
-
-        return view('admin/adminIndex', [
-            'users' => $users,
-        ]);
-        // $users = \App\Models\User::with('organization')->get();
-        // return view('test/adminHome',  compact('users'));
-
-        // $users = \App\Models\User::with('role')->get();
-        // return view('test/adminHome',  compact('users'));
-    }
 
     public function show($id)           //show one record for moreinfo button
     {
-        $user = User::find($id);                
+        $user = User::find($id);
         return view('admin/adminShow', [
             'user' => $user,
         ]);
@@ -40,7 +28,7 @@ class AdministratorController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)       //to update the data via edit
+    public function update(UserEditRequest $request, $id)       //to update the data via edit
     {
         $user = User::find($id);
         $user->update([
@@ -50,17 +38,17 @@ class AdministratorController extends Controller
             'organization_id' => $request->organization,
         ]);
         //ddd($request);
-        return redirect ('/administrator/index')->with('message', 'User Updated Successfully');
+        return redirect('/administrator/index')->with('message', 'User Updated Successfully');
     }
 
-    public function updateprivilege(Request $request, $id)      //to update peivileges via update
+    public function updateprivilege(Request $request, $id)      //to update privileges via update
     {
         $user = User::find($id);
         $user->update([
             'role_id' => $request->role,
         ]);
         //ddd($request);
-        return redirect ('/administrator/index')->with('message', 'Privilege Updated Successfully');
+        return redirect('/administrator/index')->with('message', 'Privilege Updated Successfully');
     }
 
     public function destroy($id)            //to delete a record
@@ -69,7 +57,7 @@ class AdministratorController extends Controller
         $user->delete();
 
         //return redirect ('/administrator/index')->with('message', 'User Deleted Successfully');
-        return redirect()->back()->with('message','User Successfully Deleted');
+        return redirect()->back()->with('message', 'User Successfully Deleted');
     }
 
     public function privilege($id)          //to open the privileges   
@@ -95,9 +83,10 @@ class AdministratorController extends Controller
             'user' => $user,
         ]);
     }
-    
-    public function doActivate(Request $request, $id)       //open the activate button in self registered users
+
+    public function doActivate(ActivateRequest $request, $id)       //open the activate button in self registered users
     {
+        //ddd($request);
         $user = User::find($id);
         $user->update([
             'status' => $request->status,
@@ -105,8 +94,9 @@ class AdministratorController extends Controller
             'designation_id' => $request->designation,
             'organization_id' => $request->organization,
         ]);
-        return redirect ('/administrator/selfRegistered')->with('message', 'User Activated Successfully');
+        return redirect('/administrator/selfRegistered')->with('message', 'User Activated Successfully');
     }
+
 
     public function store(UserRequest $request)
     {
@@ -120,14 +110,25 @@ class AdministratorController extends Controller
         $user->status = $request->status;
         $user->password = bcrypt("password");
         $user->save();
-        return redirect('/administrator/index')->with('message','User Successfully created');
+        return redirect('/administrator/index')->with('message', 'User Successfully created');
     }
 
-    // public function passwordReset(Request $request){
-    //     $oldformpass = $request('oldpassword');
-    //     if (Hash::check($oldformpass, Auth::user()->password, []))
-    //     {
-    //         return redirect('/administrator/index')->with('message','User Successfully created');
-    //     };
-    // }
 }
+
+////////////PASSWORD CHECKING WITHOUT VALIDATOR -- WORKS
+//     $oldformpass = $request->oldpassword;
+    //     $newpass = $request->newpassword;
+    //     $confirmpass = $request->confirmpassword;
+
+    //     if (Hash::check($oldformpass, Auth::user()->password, [])) {
+    //         if ($newpass == $confirmpass) {
+    //             $user = User::find(Auth::user()->id);
+    //             $user->update([
+    //                 'password' => bcrypt($newpass),
+    //             ]);
+    //             return redirect('/administrator/index')->with('message', 'Password Succesfully Updated');
+    //         }
+    //         return redirect('/administrator/index')->with('message', 'New passwords do not match');
+    //     } else
+    //         return redirect('/administrator/index')->with('message', 'Incorrect Password');
+    // }

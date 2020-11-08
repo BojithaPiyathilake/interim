@@ -12,6 +12,9 @@
         <h3 class="text-center bg-success text-light">{{session('message')}}</h3>
     </span>
     <span>
+        <h3 class="text-center bg-danger text-light">{{session('danger')}}</h3>
+    </span>
+    <span>
         <a href="/administrator/selfRegistered" class="btn btn-success mr-4" role="button">Activate Users</a>
         <a href="/administrator/create" class="btn btn-info mr-4" role="button">Create User</a>
     </span>

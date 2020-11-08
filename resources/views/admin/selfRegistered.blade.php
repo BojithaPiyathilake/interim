@@ -4,11 +4,11 @@
 <h3 class="p-3 display-4" style="display:inline">Activate Users</h3>
 <input type="text" style=" float: right; padding: 6px; margin-top: 20px; margin-right: 16px;border: none;font-size: 17px;" placeholder="Search..." size="30">
 <hr>
-<div class="flex row border-secondary rounded-lg ml-3 justify-content-between">
+<div class="flex row border-secondary rounded-lg ml-3">
     <span>
         <h5 class="p-3">User Details</h5>
     </span>
-    <span>
+    <span class="ml-5">
         <h3 class="text-center bg-success text-light">{{session('message')}}</h3>
     </span>
 

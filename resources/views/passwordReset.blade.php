@@ -8,16 +8,18 @@
     <hr>
     <div class="row justify-content-md-center border p-4 bg-white">
         <div class="col-6 ml-3">
-            <form method="post" action="/passwordreset">
+            <form method="post" action="/alterPassword">
                 @csrf
-                @method('patch')
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">Old Password</span>
+                        <span class="input-group-text">Current Password</span>
                     </div>
-                    <input type="password" class="form-control" name="oldpassword">
+                    <input type="password" class="form-control" name="currentpassword">
                 </div>
+                @error('currentpassword')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -25,6 +27,9 @@
                     </div>
                     <input type="password" class="form-control" name="newpassword">
                 </div>
+                @error('newpassword')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -32,9 +37,12 @@
                     </div>
                     <input type="password" class="form-control" name="confirmpassword">
                 </div>
+                @error('confirmpassword')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div style="float:right;">
-                    <button type="submit" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
