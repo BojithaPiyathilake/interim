@@ -12,7 +12,7 @@ class Crime_reportController extends Controller
     public function index()
     {
     
-        $Crime_report =new Crime_report;
+        $Crime_report = new Crime_report;
 
     }
 //
@@ -49,7 +49,7 @@ class Crime_reportController extends Controller
         $Process_item->status = "0";
         $Process_item->remark = $request['comment'];
         $Process_item->save();
-        return view('general.general',);
+        return view('general.general');
         
     }
     public function show($id) {
@@ -87,7 +87,7 @@ class Crime_reportController extends Controller
 
     public function create(Request $request)
     {
-    
+        //ddd($request);
         $request -> validate([
             'crime_type' => 'required|not_in:0',
             'description' => 'required',
@@ -96,7 +96,7 @@ class Crime_reportController extends Controller
             'create_by'=>'required',
         ]);
         
-        $Crime_report =new Crime_report;
+        $Crime_report = new Crime_report;
         $Crime_report->Created_by_user_id = $request['create_by'];
         $Crime_report->crime_type = $request['crime_type'];
         $Crime_report->description = $request['description'];
@@ -118,7 +118,7 @@ class Crime_reportController extends Controller
         ]);
 
         $id=$request['crimeid'];
-        $Users = User::all()->where('organization',$request['organization1'])->where('role',$request['role']);
+        $Users = User::all()->where('organization_id',$request['organization1'])->where('role_id',$request['role']);
         $crime = Crime_report::find($id);
         return view('general.crimeAssign',['crime' => $crime],['Users'=>$Users,
         ]);

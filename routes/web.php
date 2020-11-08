@@ -23,9 +23,6 @@ Route::get('/home', function () {
     return view('admin/dashboard');
 })->middleware(['auth', 'verified']);
 
-Route::get('/general', function(){
-    return view('admin/mainview');
-});
 
 
 //////////////////////////ADMINISTRATOR ROUTES
@@ -44,11 +41,8 @@ Route::get('/administrator/editpriviledge/{id}', 'AdministratorController@privil
 
 Route::patch('/administrator/updateprivilege/{id}', 'AdministratorController@updateprivilege');
 
-Route::get('/administrator/selfRegistered', 'AdministratorController@self');
 
-Route::get('/administrator/activate/{id}', 'AdministratorController@activate');
 
-Route::patch('/administrator/doActivate/{id}', 'AdministratorController@doActivate');
 
 Route::get('/administrator/create', function () {
          return view('admin/adminCreate');
@@ -70,6 +64,14 @@ Route::post('/alterPassword', 'UserController@alterPass');
 // Route::get('/dash', function () {
 //     return view('test3');
 // });
+
+
+//////SELF REGISTERED
+Route::get('/administrator/selfRegistered', 'AdministratorController@self');
+
+Route::get('/administrator/activate/{id}', 'AdministratorController@activate');
+
+Route::patch('/administrator/doActivate/{id}', 'AdministratorController@doActivate');
 
 
 

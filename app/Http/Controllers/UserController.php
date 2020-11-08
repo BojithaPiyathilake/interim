@@ -30,6 +30,8 @@ class UserController extends Controller
             return view('manager/managerIndex', [
                 'users' => $users,
             ]);
+        }else if ($role == NULL){            //other
+            return view('unauthorized');
         }
 
         // $users = \App\Models\User::with('organization')->get();

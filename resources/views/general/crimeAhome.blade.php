@@ -85,7 +85,7 @@
                 <a class="nav-link text-light font-italic p-2" href="/general">General Module</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light font-italic p-2" href="/dashboard/admin">User Management</a>
+                <a class="nav-link text-light font-italic p-2" href="/user/index">User Management</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light font-italic p-2" href="#">Environment Module</a>
